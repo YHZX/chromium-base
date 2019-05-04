@@ -88,6 +88,12 @@ class LinkNode {
 
   // Insert |this| into the linked list, before |e|.
   void InsertBefore(LinkNode<T>* e) {
+    if(nullptr != this->next_ ){
+        this->next_->previous_ = this->previous_;
+    }
+    if (nullptr != this->previous_){
+        this->previous_->next_ = this->next_;
+    }
     this->next_ = e;
     this->previous_ = e->previous_;
     e->previous_->next_ = this;
@@ -96,6 +102,12 @@ class LinkNode {
 
   // Insert |this| into the linked list, after |e|.
   void InsertAfter(LinkNode<T>* e) {
+    if(nullptr != this->next_ ){
+        this->next_->previous_ = this->previous_;
+    }
+    if (nullptr != this->previous_){
+        this->previous_->next_ = this->next_;
+    }
     this->next_ = e->next_;
     this->previous_ = e;
     e->next_->previous_ = this;
